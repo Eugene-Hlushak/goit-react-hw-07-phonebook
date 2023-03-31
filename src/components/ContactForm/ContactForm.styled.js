@@ -1,6 +1,7 @@
+import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
-export const AddContactForm = styled.form`
+export const AddContactForm = styled(Form)`
   width: 500px;
   padding: 20px;
 
@@ -15,7 +16,7 @@ export const FormLabel = styled.label`
   margin-bottom: 15px;
 `;
 
-export const FormInput = styled.input`
+export const FormInput = styled(Field)`
   display: block;
   margin-top: 5px;
 `;

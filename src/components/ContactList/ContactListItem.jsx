@@ -10,6 +10,7 @@ export default function ContactListItem({ contact }) {
     <ContactItem>
       <Contact>
         {contact.name}: {contact.number}
+        {contact.group && ` - ${contact.group.map(group => group).join(', ')}`}
       </Contact>
       <button onClick={() => dispatch(deleteContact(contact.id))}>
         Delete
@@ -20,8 +21,8 @@ export default function ContactListItem({ contact }) {
 
 ContactListItem.propTypes = {
   contact: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    number: PropTypes.string,
+    id: PropTypes.string,
   }).isRequired,
 };
