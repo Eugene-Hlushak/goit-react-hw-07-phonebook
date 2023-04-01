@@ -3,7 +3,13 @@ import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
-import { AddContactForm, FormInput, FormLabel } from './ContactForm.styled';
+import {
+  AddContactForm,
+  FormInput,
+  FormLabel,
+  CheckboxContainer,
+  LabelTitle,
+} from './ContactForm.styled';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -55,33 +61,36 @@ export default function ContactForm() {
     >
       <AddContactForm>
         <FormLabel>
-          Name
+          <LabelTitle>Name</LabelTitle>
           <FormInput type="text" name="name" />
           <ErrorMessage name="name" />
         </FormLabel>
 
         <FormLabel>
-          Number
+          <LabelTitle>Number</LabelTitle>
           <FormInput type="tel" name="number" />
           <ErrorMessage name="number" />
         </FormLabel>
 
-        <FormLabel>
-          <FormInput type="checkbox" name="group" value="Friends" />
-          Friends
-        </FormLabel>
-        <FormLabel>
-          <FormInput type="checkbox" name="group" value="Family" />
-          Family
-        </FormLabel>
-        <FormLabel>
-          <FormInput type="checkbox" name="group" value="Vip" />
-          Vip
-        </FormLabel>
-        <FormLabel>
-          <FormInput type="checkbox" name="group" value="Work" />
-          Work
-        </FormLabel>
+        <p>Group</p>
+        <CheckboxContainer>
+          <FormLabel>
+            <FormInput type="checkbox" name="group" value="Friends" />
+            Friends
+          </FormLabel>
+          <FormLabel>
+            <FormInput type="checkbox" name="group" value="Family" />
+            Family
+          </FormLabel>
+          <FormLabel>
+            <FormInput type="checkbox" name="group" value="Vip" />
+            Vip
+          </FormLabel>
+          <FormLabel>
+            <FormInput type="checkbox" name="group" value="Work" />
+            Work
+          </FormLabel>
+        </CheckboxContainer>
         <button type="submit">Add contact</button>
       </AddContactForm>
     </Formik>

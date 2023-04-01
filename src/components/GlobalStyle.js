@@ -34,8 +34,13 @@ h6 {
 }
 
 `;
-export const Container = styled.div`
+export const MainContainer = styled.div`
+  display: flex;
   padding: 20px;
+`;
+
+export const Container = styled.div`
+  margin-right: 20px;
 `;
 
 export const Title = styled.h2`

@@ -3,18 +3,16 @@ import { deleteContact } from 'redux/contactsSlice';
 import { useDispatch } from 'react-redux';
 import { ContactItem, Contact } from './ContactList.styled';
 
-export default function ContactListItem({ contact }) {
+export default function ContactListItem({ contact: { name, phone, id } }) {
   const dispatch = useDispatch();
 
   return (
     <ContactItem>
       <Contact>
-        {contact.name}: {contact.number}
-        {contact.group && ` - ${contact.group.map(group => group).join(', ')}`}
+        {name}: {phone}
+        {/* {contact.group && ` - ${contact.group.map(group => group).join(', ')}`} */}
       </Contact>
-      <button onClick={() => dispatch(deleteContact(contact.id))}>
-        Delete
-      </button>
+      <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
     </ContactItem>
   );
 }
