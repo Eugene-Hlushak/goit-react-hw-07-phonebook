@@ -1,8 +1,8 @@
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 import {
   AddContactForm,
   FormInput,
@@ -17,8 +17,7 @@ export default function ContactForm() {
 
   const formInitialValues = {
     name: '',
-    number: '',
-
+    phone: '',
     group: [],
   };
 
@@ -27,16 +26,15 @@ export default function ContactForm() {
       .min(3, 'Too short name')
       .max(20, 'Too long name')
       .required('Required'),
-    number: string().required('Required'),
+    phone: string().required('Required'),
   });
 
   const saveNewContact = (values, { resetForm }) => {
-    console.log(values);
-    const checkContactName = contacts.find(
+    const checkContactName = contacts.items.find(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
-    const checkContactNumber = contacts.find(
-      contact => contact.number === values.number
+    const checkContactNumber = contacts.items.find(
+      contact => contact.phone === values.phone
     );
 
     if (checkContactName || checkContactNumber) {
@@ -44,12 +42,12 @@ export default function ContactForm() {
         alert(`${values.name} is already in contacts`);
         return;
       } else {
-        alert(`${values.number} is already in contacts`);
+        alert(`${values.phone} is already in contacts`);
         return;
       }
     }
 
-    dispatch(addContact(values.name, values.number, values.group));
+    dispatch(addContact(values));
     resetForm();
   };
 
@@ -67,9 +65,9 @@ export default function ContactForm() {
         </FormLabel>
 
         <FormLabel>
-          <LabelTitle>Number</LabelTitle>
-          <FormInput type="tel" name="number" />
-          <ErrorMessage name="number" />
+          <LabelTitle>Phone</LabelTitle>
+          <FormInput type="tel" name="phone" />
+          <ErrorMessage name="phone" />
         </FormLabel>
 
         <p>Group</p>

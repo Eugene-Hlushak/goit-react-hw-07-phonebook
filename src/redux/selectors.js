@@ -1,5 +1,5 @@
 export const getContacts = state => {
-  //   console.log(state);
+  console.log(state);
   return state.contacts;
 };
 

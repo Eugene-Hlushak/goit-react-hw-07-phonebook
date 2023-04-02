@@ -16,11 +16,15 @@ export default function Filter() {
         Find contact by name
         <FilterInput
           type="text"
-          name="filter"
-          onChange={e => dispatch(showContacts(e.target.value))}
+          name="filterName"
+          onChange={e => {
+            console.log(e.target.value);
+            return dispatch(showContacts(e.target.value));
+          }}
         />
       </FilterLabel>
       <BtnContainer>
+        <BtnFilter>All</BtnFilter>
         <BtnFilter>VIP</BtnFilter>
         <BtnFilter>Family</BtnFilter>
         <BtnFilter>Friends</BtnFilter>

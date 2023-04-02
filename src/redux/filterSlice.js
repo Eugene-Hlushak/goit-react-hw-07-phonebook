@@ -6,11 +6,11 @@ const filterSlice = createSlice({
   reducers: {
     showContacts: {
       reducer: (state, { payload }) => {
-        return payload.value;
+        return payload;
       },
-      prepare(value) {
-        return { payload: { value } };
-      },
+      // prepare(value) {
+      //   return { payload: { value } };
+      // },
     },
   },
 });
