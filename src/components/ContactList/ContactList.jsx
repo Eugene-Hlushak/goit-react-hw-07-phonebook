@@ -5,19 +5,25 @@ import ContactListItem from 'components/ContactList/ContactListItem';
 import { List } from 'components/Filter/Filter.styled';
 import { fetchContacts } from 'redux/operations';
 
-const getVisibleContacts = ({ items }, filter) => {
-  if (!filter) return items;
+const getVisibleContacts = (contacts, filter) => {
+  if (!filter.filterName) return contacts;
 
-  return items.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.filterName.toLowerCase())
   );
+};
+
+const getFilteredContacts = ({ items }, filter) => {
+  if (filter.filterGroup === 'all') return items;
+  return items.filter(contact => contact.group.includes(filter.filterGroup));
 };
 
 export default function ContactList() {
   const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
   const filter = useSelector(getStatusFilter);
-  const visibleContacts = getVisibleContacts(contacts, filter);
+  const dispatch = useDispatch();
+  const filteredContacs = getFilteredContacts(contacts, filter);
+  const visibleContacts = getVisibleContacts(filteredContacs, filter);
 
   useEffect(() => {
     dispatch(fetchContacts());

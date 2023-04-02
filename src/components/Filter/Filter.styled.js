@@ -23,4 +23,8 @@ export const BtnContainer = styled.div`
 
 export const BtnFilter = styled.button`
   margin-right: 10px;
+  &:hover,
+  &:focus {
+    background-color: cyan;
+  }
 `;

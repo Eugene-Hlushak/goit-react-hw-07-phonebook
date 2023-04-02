@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { showContacts } from 'redux/filterSlice';
+import { showContactsByName, setStatusFilter } from 'redux/filterSlice';
 import {
   FilterLabel,
   FilterInput,
   BtnContainer,
   BtnFilter,
 } from './Filter.styled';
+import { filterByGroup } from 'redux/constants';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -19,16 +20,32 @@ export default function Filter() {
           name="filterName"
           onChange={e => {
             console.log(e.target.value);
-            return dispatch(showContacts(e.target.value));
+            return dispatch(showContactsByName(e.target.value));
           }}
         />
       </FilterLabel>
       <BtnContainer>
-        <BtnFilter>All</BtnFilter>
-        <BtnFilter>VIP</BtnFilter>
-        <BtnFilter>Family</BtnFilter>
-        <BtnFilter>Friends</BtnFilter>
-        <BtnFilter>Work</BtnFilter>
+        <BtnFilter onClick={() => dispatch(setStatusFilter(filterByGroup.all))}>
+          All
+        </BtnFilter>
+        <BtnFilter onClick={() => dispatch(setStatusFilter(filterByGroup.vip))}>
+          VIP
+        </BtnFilter>
+        <BtnFilter
+          onClick={() => dispatch(setStatusFilter(filterByGroup.family))}
+        >
+          Family
+        </BtnFilter>
+        <BtnFilter
+          onClick={() => dispatch(setStatusFilter(filterByGroup.friends))}
+        >
+          Friends
+        </BtnFilter>
+        <BtnFilter
+          onClick={() => dispatch(setStatusFilter(filterByGroup.work))}
+        >
+          Work
+        </BtnFilter>
       </BtnContainer>
     </>
   );

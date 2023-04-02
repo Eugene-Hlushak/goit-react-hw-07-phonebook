@@ -1,19 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { filterByGroup } from './constants';
+
+const groupFilterInitialState = filterByGroup.all;
 
 const filterSlice = createSlice({
   name: 'filter',
-  initialState: '',
+  initialState: {
+    filterName: '',
+    filterGroup: groupFilterInitialState,
+  },
   reducers: {
-    showContacts: {
+    showContactsByName: {
       reducer: (state, { payload }) => {
-        return payload;
+        return { ...state, filterName: payload };
       },
-      // prepare(value) {
-      //   return { payload: { value } };
-      // },
+    },
+    setStatusFilter: {
+      reducer: (state, { payload }) => {
+        console.log(payload);
+        return { ...state, filterGroup: payload };
+      },
     },
   },
 });
 
-export const { showContacts } = filterSlice.actions;
+export const { showContactsByName, setStatusFilter } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
