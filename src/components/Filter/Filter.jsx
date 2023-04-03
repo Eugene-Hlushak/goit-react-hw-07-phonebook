@@ -6,7 +6,7 @@ import {
   BtnContainer,
   BtnFilter,
 } from './Filter.styled';
-import { filterByGroup } from 'redux/constants';
+import { filterByCathegory } from 'redux/constants';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -25,24 +25,28 @@ export default function Filter() {
         />
       </FilterLabel>
       <BtnContainer>
-        <BtnFilter onClick={() => dispatch(setStatusFilter(filterByGroup.all))}>
+        <BtnFilter
+          onClick={() => dispatch(setStatusFilter(filterByCathegory.all))}
+        >
           All
         </BtnFilter>
-        <BtnFilter onClick={() => dispatch(setStatusFilter(filterByGroup.vip))}>
+        <BtnFilter
+          onClick={() => dispatch(setStatusFilter(filterByCathegory.vip))}
+        >
           VIP
         </BtnFilter>
         <BtnFilter
-          onClick={() => dispatch(setStatusFilter(filterByGroup.family))}
+          onClick={() => dispatch(setStatusFilter(filterByCathegory.family))}
         >
           Family
         </BtnFilter>
         <BtnFilter
-          onClick={() => dispatch(setStatusFilter(filterByGroup.friends))}
+          onClick={() => dispatch(setStatusFilter(filterByCathegory.friends))}
         >
           Friends
         </BtnFilter>
         <BtnFilter
-          onClick={() => dispatch(setStatusFilter(filterByGroup.work))}
+          onClick={() => dispatch(setStatusFilter(filterByCathegory.work))}
         >
           Work
         </BtnFilter>

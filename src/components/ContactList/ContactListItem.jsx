@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { deleteContact } from 'redux/operations';
 import { useDispatch } from 'react-redux';
+import { deleteContact, getContactInfo } from 'redux/operations';
 import { ContactItem, Contact } from './ContactList.styled';
 
 export default function ContactListItem({
@@ -12,17 +12,17 @@ export default function ContactListItem({
   return (
     <ContactItem>
       <Contact>
-        {name}: {phone}
-        {group.length > 0 && ` - ${group.map(group => group).join(', ')}`}
+        <button
+          onClick={() => {
+            dispatch(getContactInfo(id));
+          }}
+        >
+          {name}: {phone}
+        </button>
+        {/* {group.length > 0 && ` - ${group.map(group => group).join(', ')}`} */}
       </Contact>
 
-      <button
-        onClick={() => {
-          dispatch(deleteContact(id));
-        }}
-      >
-        Delete
-      </button>
+      <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
     </ContactItem>
   );
 }

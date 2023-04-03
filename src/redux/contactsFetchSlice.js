@@ -1,54 +1,65 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  getContactInfo,
+} from './operations';
+
 const initialState = {
   items: [],
+  contact: null,
   isLoad: false,
   error: null,
+};
+
+const pendingState = state => {
+  state.isLoad = true;
+};
+
+const errorState = (state, { payload }) => {
+  state.isLoad = false;
+  state.error = payload;
 };
 
 export const contactsFetchSlice = createSlice({
   name: 'contacts',
   initialState: initialState,
-  items: [],
-  isLoad: false,
-  error: null,
   extraReducers: {
-    [fetchContacts.pending](state) {
-      state.isLoad = true;
-    },
+    [fetchContacts.pending]: pendingState,
+
     [fetchContacts.fulfilled](state, { payload }) {
       state.isLoad = false;
+      state.contact = null;
       state.error = null;
       state.items = payload;
     },
-    [fetchContacts.rejected](state, { payload }) {
-      state.isLoad = false;
-      state.error = payload;
-    },
-    [addContact.pending](state) {
-      state.isLoad = true;
-    },
-    [addContact.fullfield](state, { payload }) {
+    [fetchContacts.rejected]: errorState,
+
+    [addContact.pending]: pendingState,
+    [addContact.fulfilled](state, { payload }) {
       state.isLoad = false;
       state.error = null;
-      state.items.push(payload);
+      state.contact = null;
+      state.items = [...state.items, payload];
     },
-    [addContact.rejected](state, { payload }) {
-      state.isLoad = false;
-      state.error = payload;
-    },
-    [deleteContact.pending](state) {
-      state.isLoad = true;
-    },
-    [deleteContact.fullfield](state, { payload }) {
+    [addContact.rejected]: errorState,
+
+    [getContactInfo.pending]: pendingState,
+    [getContactInfo.fulfilled](state, { payload }) {
       state.isLoad = false;
       state.error = null;
-      state.items.push(payload);
+      state.contact = payload;
     },
-    [deleteContact.rejected](state, { payload }) {
+    [getContactInfo.rejected]: errorState,
+
+    [deleteContact.pending]: pendingState,
+    [deleteContact.fulfilled](state, { payload }) {
       state.isLoad = false;
-      state.error = payload;
+      state.error = null;
+      state.items = [...state.items.filter(item => item.id !== payload.id)];
     },
+    [deleteContact.rejected]: errorState,
   },
 });
 

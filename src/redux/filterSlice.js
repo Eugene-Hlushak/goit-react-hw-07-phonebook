@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { filterByGroup } from './constants';
+import { filterByCathegory } from './constants';
 
-const groupFilterInitialState = filterByGroup.all;
+const cathegoryFilterInitialState = filterByCathegory.all;
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState: {
     filterName: '',
-    filterGroup: groupFilterInitialState,
+    filterCathegory: cathegoryFilterInitialState,
   },
   reducers: {
     showContactsByName: {
@@ -17,8 +17,7 @@ const filterSlice = createSlice({
     },
     setStatusFilter: {
       reducer: (state, { payload }) => {
-        console.log(payload);
-        return { ...state, filterGroup: payload };
+        return { ...state, filterCathegory: payload };
       },
     },
   },

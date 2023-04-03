@@ -18,7 +18,7 @@ export default function ContactForm() {
   const formInitialValues = {
     name: '',
     phone: '',
-    group: [],
+    cathegory: [],
   };
 
   const validationSchema = object({
@@ -30,10 +30,10 @@ export default function ContactForm() {
   });
 
   const saveNewContact = (values, { resetForm }) => {
-    const checkContactName = contacts.items.find(
+    const checkContactName = contacts.find(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
-    const checkContactNumber = contacts.items.find(
+    const checkContactNumber = contacts.find(
       contact => contact.phone === values.phone
     );
 
@@ -70,22 +70,22 @@ export default function ContactForm() {
           <ErrorMessage name="phone" />
         </FormLabel>
 
-        <p>Group</p>
+        <p>Cathegory</p>
         <CheckboxContainer>
           <FormLabel>
-            <FormInput type="checkbox" name="group" value="Friends" />
+            <FormInput type="checkbox" name="cathegory" value="Friends" />
             Friends
           </FormLabel>
           <FormLabel>
-            <FormInput type="checkbox" name="group" value="Family" />
+            <FormInput type="checkbox" name="cathegory" value="Family" />
             Family
           </FormLabel>
           <FormLabel>
-            <FormInput type="checkbox" name="group" value="Vip" />
+            <FormInput type="checkbox" name="cathegory" value="Vip" />
             Vip
           </FormLabel>
           <FormLabel>
-            <FormInput type="checkbox" name="group" value="Work" />
+            <FormInput type="checkbox" name="cathegory" value="Work" />
             Work
           </FormLabel>
         </CheckboxContainer>

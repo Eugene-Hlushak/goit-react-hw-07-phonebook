@@ -1,4 +1,4 @@
-export const filterByGroup = Object.freeze({
+export const filterByCathegory = Object.freeze({
   all: 'all',
   family: 'Family',
   friends: 'Friends',
