@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const List = styled.ul`
-  height: 300px;
-  padding: 10px;
-  border: 1px solid black;
-  overflow-y: scroll;
-`;
-
 export const FilterLabel = styled.label`
   display: block;
   margin-bottom: 15px;
@@ -26,5 +19,8 @@ export const BtnFilter = styled.button`
   &:hover,
   &:focus {
     background-color: cyan;
+  }
+  &:active {
+    background-color: violet;
   }
 `;

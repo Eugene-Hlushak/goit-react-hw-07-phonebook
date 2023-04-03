@@ -1,14 +1,15 @@
-import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { GlobalStyle, MainContainer, Title, Container } from './GlobalStyle';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 import ContactDetails from './ContactDetails/ContactDetails';
-import { useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 
 export function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -23,7 +24,7 @@ export function App() {
       <Container>
         <Title>Contacts</Title>
         <Filter />
-        <ContactList />
+        {<ContactList />}
       </Container>
       <GlobalStyle />
     </MainContainer>

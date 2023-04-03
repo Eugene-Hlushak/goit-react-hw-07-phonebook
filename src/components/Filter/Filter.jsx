@@ -12,8 +12,6 @@ import { filterByCathegory } from 'redux/constants';
 export default function Filter() {
   const dispatch = useDispatch();
   const { filterCathegory } = useSelector(getFilter);
-  console.log(filterCathegory);
-  console.log(BtnFilter);
 
   return (
     <>

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const List = styled.ul`
+  height: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  overflow-y: scroll;
+`;
+
 export const ContactItem = styled.li`
   width: 400px;
   display: flex;

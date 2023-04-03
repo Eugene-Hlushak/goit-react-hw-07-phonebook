@@ -16,9 +16,8 @@ export default function ContactListItem({
             dispatch(getContactInfo(id));
           }}
         >
-          {name}: {phone}
+          <span>{name}</span>: <span>{phone}</span>
         </button>
-        {/* {group.length > 0 && ` - ${group.map(group => group).join(', ')}`} */}
       </Contact>
 
       <button onClick={() => dispatch(deleteContact(id))}>Delete</button>

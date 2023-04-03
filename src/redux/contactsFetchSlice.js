@@ -8,17 +8,18 @@ import {
 
 const initialState = {
   items: [],
+  itemsIsLoading: false,
   contact: null,
-  isLoad: false,
+  contactIsLoading: false,
   error: null,
 };
 
 const pendingState = state => {
-  state.isLoad = true;
+  state.itemsIsLoading = true;
 };
 
 const errorState = (state, { payload }) => {
-  state.isLoad = false;
+  state.itemsIsLoading = false;
   state.error = payload;
 };
 
@@ -27,9 +28,8 @@ export const contactsFetchSlice = createSlice({
   initialState: initialState,
   extraReducers: {
     [fetchContacts.pending]: pendingState,
-
     [fetchContacts.fulfilled](state, { payload }) {
-      state.isLoad = false;
+      state.itemsIsLoading = false;
       state.contact = null;
       state.error = null;
       state.items = payload;
@@ -38,28 +38,35 @@ export const contactsFetchSlice = createSlice({
 
     [addContact.pending]: pendingState,
     [addContact.fulfilled](state, { payload }) {
-      state.isLoad = false;
+      state.itemsIsLoading = false;
       state.error = null;
       state.contact = null;
       state.items = [...state.items, payload];
     },
     [addContact.rejected]: errorState,
 
-    [getContactInfo.pending]: pendingState,
-    [getContactInfo.fulfilled](state, { payload }) {
-      state.isLoad = false;
-      state.error = null;
-      state.contact = payload;
-    },
-    [getContactInfo.rejected]: errorState,
-
     [deleteContact.pending]: pendingState,
     [deleteContact.fulfilled](state, { payload }) {
-      state.isLoad = false;
+      state.itemsIsLoading = false;
       state.error = null;
       state.items = [...state.items.filter(item => item.id !== payload.id)];
     },
     [deleteContact.rejected]: errorState,
+
+    [getContactInfo.pending](state) {
+      state.contactIsLoading = true;
+    },
+    [getContactInfo.fulfilled](state, { payload }) {
+      state.contactIsLoading = false;
+      state.itemsIsLoading = false;
+      state.error = null;
+      state.contact = payload;
+    },
+    [getContactInfo.rejected](state, { payload }) {
+      state.contactIsLoading = false;
+      state.itemsIsLoading = false;
+      state.error = payload;
+    },
   },
 });
 
