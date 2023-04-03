@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const ContactDetails = () => {
   const contactInfo = useSelector(getContactInfo);
-  console.log(contactInfo);
   return (
     <DetailsContainer>
       <ContactCard>

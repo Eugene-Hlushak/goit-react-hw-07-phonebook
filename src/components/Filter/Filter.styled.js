@@ -4,7 +4,6 @@ export const List = styled.ul`
   height: 300px;
   padding: 10px;
   border: 1px solid black;
-
   overflow-y: scroll;
 `;
 
@@ -22,6 +21,7 @@ export const BtnContainer = styled.div`
 `;
 
 export const BtnFilter = styled.button`
+  background-color: ${props => (props.selected ? `cyan` : `lightgray`)};
   margin-right: 10px;
   &:hover,
   &:focus {

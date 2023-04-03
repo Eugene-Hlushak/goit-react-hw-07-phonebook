@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getContacts, getStatusFilter } from 'redux/selectors';
+import { getContacts, getFilter } from 'redux/selectors';
 import ContactListItem from 'components/ContactList/ContactListItem';
 import { List } from 'components/Filter/Filter.styled';
 import {
@@ -9,7 +9,7 @@ import {
 
 export default function ContactList() {
   const contacts = useSelector(getContacts);
-  const filter = useSelector(getStatusFilter);
+  const filter = useSelector(getFilter);
   const filteredContacts = getFilteredContacts(contacts, filter);
   const visibleContacts = getVisibleContacts(filteredContacts, filter);
 
