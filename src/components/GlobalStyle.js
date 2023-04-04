@@ -45,8 +45,6 @@ export const MainTitle = styled.h1`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin-right: 20px;
 `;
 
 export const Title = styled.h2`

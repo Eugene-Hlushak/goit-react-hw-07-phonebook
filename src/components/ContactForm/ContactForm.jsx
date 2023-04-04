@@ -10,7 +10,8 @@ import {
   CheckboxContainer,
   LabelTitle,
   CheckboxLabel,
-  CheckboxTitle,
+  CheckboxLabelNoMarginRight,
+  Container,
 } from './ContactForm.styled';
 
 export default function ContactForm() {
@@ -73,23 +74,25 @@ export default function ContactForm() {
         </FormLabel>
 
         <CheckboxContainer>
-          <CheckboxTitle>Cathegory</CheckboxTitle>
-          <CheckboxLabel>
-            <FormInput type="checkbox" name="cathegory" value="Friends" />
-            Friends
-          </CheckboxLabel>
-          <CheckboxLabel>
-            <FormInput type="checkbox" name="cathegory" value="Family" />
-            Family
-          </CheckboxLabel>
-          <CheckboxLabel>
-            <FormInput type="checkbox" name="cathegory" value="Vip" />
-            Vip
-          </CheckboxLabel>
-          <FormLabel>
-            <FormInput type="checkbox" name="cathegory" value="Work" />
-            Work
-          </FormLabel>
+          <LabelTitle>Cathegory</LabelTitle>
+          <Container>
+            <CheckboxLabel>
+              <FormInput type="checkbox" name="cathegory" value="Friends" />
+              Friends
+            </CheckboxLabel>
+            <CheckboxLabelNoMarginRight>
+              <FormInput type="checkbox" name="cathegory" value="Family" />
+              Family
+            </CheckboxLabelNoMarginRight>
+            <CheckboxLabel>
+              <FormInput type="checkbox" name="cathegory" value="Vip" />
+              Vip
+            </CheckboxLabel>
+            <CheckboxLabelNoMarginRight>
+              <FormInput type="checkbox" name="cathegory" value="Work" />
+              Work
+            </CheckboxLabelNoMarginRight>
+          </Container>
         </CheckboxContainer>
         <button type="submit">Add contact</button>
       </AddContactForm>

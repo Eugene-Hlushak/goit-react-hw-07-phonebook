@@ -8,6 +8,7 @@ import {
   ContactTitle,
   ContactData,
   LastElement,
+  Span,
 } from './ContactDetails.styled';
 
 const ContactDetails = () => {
@@ -33,9 +34,15 @@ const ContactDetails = () => {
       )}
       {contact && !isLoading && (
         <ContactCard>
-          <ContactData>Name - {contact.name}</ContactData>
-          <ContactData>Phone number - {contact.phone}</ContactData>
-          <ContactData>Cathegory: {contact.cathegory.join(', ')}</ContactData>
+          <ContactData>
+            Name: <Span>{contact.name}</Span>
+          </ContactData>
+          <ContactData>
+            Phone number: <Span>{contact.phone}</Span>
+          </ContactData>
+          <ContactData>
+            Cathegory: <Span>{contact.cathegory.join(', ')}</Span>
+          </ContactData>
           <LastElement>Created: {contact.createdAt}</LastElement>
         </ContactCard>
       )}

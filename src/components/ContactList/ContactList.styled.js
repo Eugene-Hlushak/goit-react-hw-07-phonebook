@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   width: 400px;
-  height: 230px;
+  height: 237px;
   padding: 10px;
   border: 1px solid black;
   overflow-y: scroll;

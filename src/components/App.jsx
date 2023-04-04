@@ -26,10 +26,12 @@ export function App() {
     <>
       <MainContainer>
         <MainTitle>Phonebook</MainTitle>
-        <Title>Add new contact</Title>
-        <ContactForm />
-
         <Container>
+          <div style={{ marginRight: 20 }}>
+            <Title>Add new contact</Title>
+            <ContactForm />
+            <ContactDetails />
+          </div>
           <div>
             <Title>
               Contacts: {contacts.length > 0 && <span>{contacts.length}</span>}
@@ -37,8 +39,9 @@ export function App() {
             <Filter />
             <ContactList />
           </div>
-          <ContactDetails />
         </Container>
+
+        <Container></Container>
         <GlobalStyle />
       </MainContainer>
     </>
