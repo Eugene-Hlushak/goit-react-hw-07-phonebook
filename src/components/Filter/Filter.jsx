@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { showContactsByName, setStatusFilter } from 'redux/filterSlice';
+import { selectCathegoryFilter } from 'redux/selectors';
+import { filterByCathegory } from 'redux/constants';
 import {
   FilterLabel,
   FilterInput,
   BtnContainer,
   BtnFilter,
 } from './Filter.styled';
-import { getFilter } from 'redux/selectors';
-import { filterByCathegory } from 'redux/constants';
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const { filterCathegory } = useSelector(getFilter);
+  const cathegory = useSelector(selectCathegoryFilter);
 
   return (
     <>
@@ -28,31 +28,31 @@ export default function Filter() {
       </FilterLabel>
       <BtnContainer>
         <BtnFilter
-          selected={filterCathegory === filterByCathegory.all}
+          selected={cathegory === filterByCathegory.all}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.all))}
         >
           All
         </BtnFilter>
         <BtnFilter
-          selected={filterCathegory === filterByCathegory.vip}
+          selected={cathegory === filterByCathegory.vip}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.vip))}
         >
           VIP
         </BtnFilter>
         <BtnFilter
-          selected={filterCathegory === filterByCathegory.family}
+          selected={cathegory === filterByCathegory.family}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.family))}
         >
           Family
         </BtnFilter>
         <BtnFilter
-          selected={filterCathegory === filterByCathegory.friends}
+          selected={cathegory === filterByCathegory.friends}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.friends))}
         >
           Friends
         </BtnFilter>
         <BtnFilter
-          selected={filterCathegory === filterByCathegory.work}
+          selected={cathegory === filterByCathegory.work}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.work))}
         >
           Work

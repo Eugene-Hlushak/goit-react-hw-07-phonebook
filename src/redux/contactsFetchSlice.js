@@ -58,13 +58,11 @@ export const contactsFetchSlice = createSlice({
     },
     [getContactInfo.fulfilled](state, { payload }) {
       state.contactIsLoading = false;
-      state.itemsIsLoading = false;
       state.error = null;
       state.contact = payload;
     },
     [getContactInfo.rejected](state, { payload }) {
       state.contactIsLoading = false;
-      state.itemsIsLoading = false;
       state.error = payload;
     },
   },

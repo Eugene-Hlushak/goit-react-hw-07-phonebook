@@ -1,18 +1,12 @@
 import { useSelector } from 'react-redux';
 import { Puff } from 'react-loader-spinner';
 import ContactListItem from './ContactListItem';
+import { selectVisibleContacts, selectItemsIsLoading } from 'redux/selectors';
 import { List } from './ContactList.styled';
-import {
-  getFilteredContacts,
-  getVisibleContacts,
-} from 'services/filterFunction';
 
 export default function ContactList() {
-  const { items, itemsIsLoading } = useSelector(state => state.contacts);
-  const { filterName, filterCathegory } = useSelector(state => state.filter);
-
-  const filteredContacts = getFilteredContacts(items, filterCathegory);
-  const visibleContacts = getVisibleContacts(filteredContacts, filterName);
+  const itemsIsLoading = useSelector(selectItemsIsLoading);
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
     <List>
