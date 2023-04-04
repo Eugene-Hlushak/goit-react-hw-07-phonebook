@@ -10,17 +10,25 @@ export const FilterInput = styled.input`
 `;
 
 export const BtnContainer = styled.div`
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 15px;
 `;
 
 export const BtnFilter = styled.button`
-  background-color: ${props => (props.selected ? `cyan` : `lightgray`)};
-  margin-right: 10px;
+  border: 1px solid tomato;
+  border-radius: 4px;
+  background-color: ${props => (props.selected ? `tomato` : `lightgray`)};
   &:hover,
   &:focus {
-    background-color: cyan;
+    background-color: tomato;
   }
   &:active {
     background-color: violet;
   }
+`;
+
+export const BtnFilterMargin = styled(BtnFilter)`
+  margin-right: 10px;
 `;

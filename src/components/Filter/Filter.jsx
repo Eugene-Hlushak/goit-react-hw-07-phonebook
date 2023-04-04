@@ -7,6 +7,7 @@ import {
   FilterInput,
   BtnContainer,
   BtnFilter,
+  BtnFilterMargin,
 } from './Filter.styled';
 
 export default function Filter() {
@@ -27,30 +28,30 @@ export default function Filter() {
         />
       </FilterLabel>
       <BtnContainer>
-        <BtnFilter
+        <BtnFilterMargin
           selected={cathegory === filterByCathegory.all}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.all))}
         >
           All
-        </BtnFilter>
-        <BtnFilter
+        </BtnFilterMargin>
+        <BtnFilterMargin
           selected={cathegory === filterByCathegory.vip}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.vip))}
         >
           VIP
-        </BtnFilter>
-        <BtnFilter
+        </BtnFilterMargin>
+        <BtnFilterMargin
           selected={cathegory === filterByCathegory.family}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.family))}
         >
           Family
-        </BtnFilter>
-        <BtnFilter
+        </BtnFilterMargin>
+        <BtnFilterMargin
           selected={cathegory === filterByCathegory.friends}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.friends))}
         >
           Friends
-        </BtnFilter>
+        </BtnFilterMargin>
         <BtnFilter
           selected={cathegory === filterByCathegory.work}
           onClick={() => dispatch(setStatusFilter(filterByCathegory.work))}

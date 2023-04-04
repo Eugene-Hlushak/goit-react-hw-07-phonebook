@@ -35,14 +35,28 @@ h6 {
 
 `;
 export const MainContainer = styled.div`
-  display: flex;
   padding: 20px;
 `;
 
+export const MainTitle = styled.h1`
+  text-align: center;
+  margin-bottom: 10px;
+`;
+
 export const Container = styled.div`
+  display: flex;
+  justify-content: space-evenly;
   margin-right: 20px;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+`;
+
+export const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

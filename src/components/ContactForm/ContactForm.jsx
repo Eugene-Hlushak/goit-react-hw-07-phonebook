@@ -9,6 +9,8 @@ import {
   FormLabel,
   CheckboxContainer,
   LabelTitle,
+  CheckboxLabel,
+  CheckboxTitle,
 } from './ContactForm.styled';
 
 export default function ContactForm() {
@@ -70,20 +72,20 @@ export default function ContactForm() {
           <ErrorMessage name="phone" />
         </FormLabel>
 
-        <p>Cathegory</p>
         <CheckboxContainer>
-          <FormLabel>
+          <CheckboxTitle>Cathegory</CheckboxTitle>
+          <CheckboxLabel>
             <FormInput type="checkbox" name="cathegory" value="Friends" />
             Friends
-          </FormLabel>
-          <FormLabel>
+          </CheckboxLabel>
+          <CheckboxLabel>
             <FormInput type="checkbox" name="cathegory" value="Family" />
             Family
-          </FormLabel>
-          <FormLabel>
+          </CheckboxLabel>
+          <CheckboxLabel>
             <FormInput type="checkbox" name="cathegory" value="Vip" />
             Vip
-          </FormLabel>
+          </CheckboxLabel>
           <FormLabel>
             <FormInput type="checkbox" name="cathegory" value="Work" />
             Work
